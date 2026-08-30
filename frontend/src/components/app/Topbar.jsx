@@ -1,12 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { Menu, RefreshCw } from "lucide-react";
-import { PAGE_META } from "@/config/navigationConfig";
+import { PAGE_META, PAGE_TAB_TITLES } from "@/config/navigationConfig";
 import NotificationBell from "@/components/app/NotificationBell";
 
 export default function Topbar({ onToggleSidebar }) {
   const location = useLocation();
   const segment = location.pathname.split("/")[2] || "dashboard";
   const meta = PAGE_META[segment] || { title: "Beranda", kicker: "" };
+  const tab = new URLSearchParams(location.search).get("tab") || "";
+  const title = PAGE_TAB_TITLES[segment]?.[tab] || meta.title;
 
   return (
     <header className="topbar" role="banner">
@@ -30,7 +32,7 @@ export default function Topbar({ onToggleSidebar }) {
             </>
           ) : null}
         </nav>
-        <h1 data-testid="page-title" className="page-title">{meta.title}</h1>
+        <h1 data-testid="page-title" className="page-title">{title}</h1>
       </div>
 
       <div className="topbar-actions">

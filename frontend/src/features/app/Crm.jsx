@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Plus, LayoutGrid, AlarmClock, Megaphone, TrendingUp, Users2, Banknote, Target, Flame, Filter, Workflow, Radio } from "lucide-react";
 import apiClient from "@/services/apiClient";
 import { LoadingState, EmptyState, ErrorState } from "@/components/shared/DataStates";
@@ -35,7 +36,12 @@ function Kpi({ icon: Icon, label, value, tone }) {
 }
 
 export default function Crm() {
-  const [tab, setTab] = useState("pipeline");
+  // Tab hidup di URL (?tab=) supaya heading Topbar ikut tab aktif dan tab bisa di-deep-link.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const validTabs = TABS.map(([k]) => k);
+  const raw = searchParams.get("tab") || "pipeline";
+  const tab = validTabs.includes(raw) ? raw : "pipeline";
+  const setTab = (k) => setSearchParams(k === "pipeline" ? {} : { tab: k }, { replace: true });
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

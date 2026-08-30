@@ -220,5 +220,14 @@ Implementasi tipe blok BARU **`route_grid` ("Rute Antar-Jemput")**:
   /lp/sewa-hiace-jakarta & template lain aman). Suite: backend/tests/test_landing_route_grid.py.
 - Catatan QA: opsi select "+ Tambah blok" (shadcn) belum punya testid per-opsi (kosmetik).
 
+## Sesi 2026-08-30 (lanjutan 2) — Heading CRM ikut tab aktif (backlog kosmetik DITUTUP)
+- Tab CRM kini hidup di URL (`/app/crm?tab=broadcast` dst, Crm.jsx pakai useSearchParams,
+  replace:true, fallback pipeline utk tab tak valid) → bisa di-deep-link.
+- `PAGE_TAB_TITLES` baru di navigationConfig.js (export TERPISAH dari PAGE_META agar parser
+  guardrail INV-RBAC-04 tidak menganggapnya section) — Topbar membaca `?tab=` dan menampilkan
+  judul per-tab ("CRM · Broadcast WhatsApp", "CRM · Skor & SLA", dst).
+- Verifikasi self-test screenshot: 4 perpindahan tab + deep-link + fallback tab invalid → judul
+  benar semua; gate HIJAU penuh. Pola siap dipakai halaman ber-tab lain (mis. Ads) bila diminta.
+
 
 

@@ -63,6 +63,21 @@ export const PAGE_META = {
   auditlog: { title: "Jejak Audit", kicker: "Sistem" },
 };
 
+// Judul halaman per-TAB (dibaca Topbar dari query `?tab=`): heading mengikuti tab aktif
+// supaya pengguna tidak bingung "di mana saya" saat berpindah tab dalam satu halaman.
+export const PAGE_TAB_TITLES = {
+  crm: {
+    pipeline: "CRM · Pipeline Lead",
+    scoreboard: "CRM · Skor & SLA",
+    rfm: "CRM · RFM & LTV",
+    segments: "CRM · Segmen Pelanggan",
+    sequences: "CRM · Sequence Follow-up",
+    campaigns: "CRM · Campaign",
+    broadcast: "CRM · Broadcast WhatsApp",
+    reminder: "CRM · Reminder Follow-up",
+  },
+};
+
 // Struktur navigasi: standalone item + grup collapsible.
 export const NAV_TREE = [
   { type: "standalone", id: "dashboard", label: "Beranda", icon: LayoutDashboard, path: "/app/dashboard" },
