@@ -173,7 +173,7 @@ TEMPLATES = {
         "name": "Armada · Antar-Jemput Bandara",
         "description": "Untuk iklan transfer bandara: hero jemput, jaminan tepat waktu, "
                        "estimasi tarif, dan formulir singkat.",
-        "highlights": ["Hero bandara", "Jaminan tepat waktu", "Estimasi tarif", "Formulir singkat"],
+        "highlights": ["Hero bandara", "Rute tarif flat", "Estimasi tarif", "Formulir singkat"],
         "theme": {"preset": "biru-laut", "button_shape": "rounded"},
         "blocks": lambda: [
             _search_hero("Antar-Jemput Bandara Tepat Waktu",
@@ -186,6 +186,12 @@ TEMPLATES = {
                 {"icon": "receipt", "title": "Harga tetap", "text": "Tol & parkir sudah termasuk, tidak ada kejutan."},
                 {"icon": "user-check", "title": "Sopir berjas", "text": "Menunggu dengan papan nama di pintu kedatangan."},
             ], title="Kenapa transfer bandara kami tenang"),
+            _blk("route_grid", {"title": "Rute & tarif tetap", "subtitle":
+                                "Harga flat per rute sekali jalan — sudah termasuk driver, tol & parkir.",
+                                "ids": [], "limit": 6, "show_price": True,
+                                "cta": {"label": "Lihat semua rute", "kind": "internal",
+                                        "target": "/booking", "style": "secondary",
+                                        "keep_attribution": True}}),
             _blk("fleet_grid", {"title": "Unit untuk transfer", "subtitle": "Bagasi lega untuk keluarga",
                                 "limit": 4, "show_price": True, "vehicle_type": "hiace"}),
             _blk("price_estimator", {"title": "Perkiraan tarif penjemputan",

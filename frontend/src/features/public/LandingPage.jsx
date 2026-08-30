@@ -25,7 +25,7 @@ export default function LandingPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [page, setPage] = useState(null);
-  const [refs, setRefs] = useState({ fleet: [], destinations: [], testimonials: [] });
+  const [refs, setRefs] = useState({ fleet: [], destinations: [], routes: [], testimonials: [] });
   const [refsLoading, setRefsLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -48,10 +48,12 @@ export default function LandingPage() {
     Promise.all([
       axios.get(`${API}/public/fleet`).then((r) => r.data).catch(() => []),
       axios.get(`${API}/public/destinations`).then((r) => r.data).catch(() => []),
+      axios.get(`${API}/public/booking/config`).then((r) => r.data).catch(() => ({})),
       axios.get(`${API}/public/testimonials`).then((r) => r.data).catch(() => []),
-    ]).then(([fleet, dest, testi]) => {
+    ]).then(([fleet, dest, cfg, testi]) => {
       const arr = (v) => (Array.isArray(v) ? v : v?.items || []);
-      setRefs({ fleet: arr(fleet), destinations: arr(dest), testimonials: arr(testi) });
+      setRefs({ fleet: arr(fleet), destinations: arr(dest),
+        routes: Array.isArray(cfg?.routes) ? cfg.routes : [], testimonials: arr(testi) });
     }).finally(() => setRefsLoading(false));
   }, [slug, landingPath]);
   useEffect(load, [load]);
@@ -195,7 +197,7 @@ export default function LandingPage() {
   return (
     <div data-surface="public" data-testid="lp-public" data-variant={variantId}>
       <LandingRender page={page} mode="public" fleet={refs.fleet} destinations={refs.destinations}
-        testimonials={refs.testimonials} refsLoading={refsLoading}
+        routes={refs.routes} testimonials={refs.testimonials} refsLoading={refsLoading}
         onCta={onCta} onSearch={onSearch} onLeadSubmit={onLeadSubmit} />
     </div>
   );

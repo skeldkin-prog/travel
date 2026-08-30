@@ -9,7 +9,7 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Colors:
     GREEN = "\033[92m"

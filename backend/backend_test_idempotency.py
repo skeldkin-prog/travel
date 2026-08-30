@@ -9,7 +9,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 
-BASE_URL = "https://infallible-moser-5.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class IdempotencyTester:
     def __init__(self):

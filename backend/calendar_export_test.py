@@ -8,14 +8,14 @@ Tests calendar export enhancements:
 - Response validation (content-type, size)
 
 Demo credentials: owner@demo.local / demo12345
-Backend URL: https://travel-jsonld.preview.emergentagent.com/api
+Backend URL: https://trip-route-buttons.preview.emergentagent.com/api
 """
 
 import requests
 import sys
 from datetime import datetime
 
-BASE_URL = "https://travel-jsonld.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Colors:
     GREEN = '\033[92m'

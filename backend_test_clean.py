@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 import random
 
-BASE_URL = "https://infallible-moser-5.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Colors:
     GREEN = '\033[92m'

@@ -7,7 +7,7 @@ import requests
 import sys
 from typing import Dict, Any
 
-BASE_URL = "https://erp-5xx-fixes.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class TestRunner:
     def __init__(self):

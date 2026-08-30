@@ -7,7 +7,7 @@ import requests
 import sys
 from datetime import datetime, timedelta
 
-BASE_URL = "https://backend-verify-17.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 OWNER_EMAIL = "owner@demo.local"
 OWNER_PASSWORD = "demo12345"
 

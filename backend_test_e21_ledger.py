@@ -18,7 +18,7 @@ import requests
 from datetime import datetime, timedelta
 
 # Base URL dari frontend/.env
-BASE_URL = os.getenv("REACT_APP_BACKEND_URL", "https://backend-verify-17.preview.emergentagent.com")
+BASE_URL = os.getenv("REACT_APP_BACKEND_URL", "https://trip-route-buttons.preview.emergentagent.com")
 API_URL = f"{BASE_URL}/api"
 
 # Test credentials

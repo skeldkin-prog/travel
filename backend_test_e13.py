@@ -14,7 +14,7 @@ import sys
 import requests
 from datetime import datetime
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 
 class E13APITester:
     def __init__(self):

@@ -2,7 +2,7 @@ import { HeroMedia, SearchHero } from "@/components/app/landing/blocks/HeroBlock
 import { CtaBand, LeadForm, PriceEstimator, WaCta } from "@/components/app/landing/blocks/ConversionBlocks";
 import { Countdown, Faq, Gallery, RichText, TrustBadges, ValueProps, VideoBlock }
   from "@/components/app/landing/blocks/ContentBlocks";
-import { DestinationGrid, FleetGrid, Testimonials } from "@/components/app/landing/blocks/EntityBlocks";
+import { DestinationGrid, FleetGrid, RouteGrid, Testimonials } from "@/components/app/landing/blocks/EntityBlocks";
 import { themeOf } from "@/components/app/landing/shared";
 
 /**
@@ -23,6 +23,7 @@ export default function LandingRender({
   page,
   fleet = [],
   destinations = [],
+  routes = [],
   testimonials = [],
   refsLoading = false,
   loading = false,
@@ -71,6 +72,9 @@ export default function LandingRender({
             return <FleetGrid key={b.id} p={p} theme={theme} fleet={fleet} loading={refsLoading} onCta={go} />;
           case "destination_grid":
             return <DestinationGrid key={b.id} p={p} theme={theme} destinations={destinations}
+              loading={refsLoading} onCta={go} />;
+          case "route_grid":
+            return <RouteGrid key={b.id} p={p} theme={theme} routes={routes}
               loading={refsLoading} onCta={go} />;
           case "gallery":
             return <Gallery key={b.id} p={p} theme={theme} />;

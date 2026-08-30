@@ -15,7 +15,7 @@ Credentials:
 import requests
 import sys
 
-BASE_URL = "https://rahaza-calendar-fix.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class RBACTester:
     def __init__(self):

@@ -201,5 +201,24 @@ attribution tak tersedia via OpenWA; Meta/Google Ads & GA4 masih MOCKED.
   + auto-reply, terverifikasi iteration_103); begitu QR discan, Inbox & Broadcast langsung
   memakai WA nyata.
 
+## Sesi 2026-08-30 (lanjutan) — Landing Page Builder: BLOK RUTE NYATA (iteration_107, 0 bug)
+Keluhan user: builder "tidak mengambil sama sekali data dari rute yang ada, tampak mockup".
+Investigasi: blok fleet/destinasi/testimoni SUDAH menarik data nyata; yang HILANG adalah blok
+untuk rute antar-jemput bertarif flat (master `transfer_routes`, endpoint publik
+`GET /api/public/booking/config` → routes[]).
+Implementasi tipe blok BARU **`route_grid` ("Rute Antar-Jemput")**:
+- Backend: `landing_blocks._route_grid` (props kanonik title/subtitle/ids/limit/show_price/cta,
+  terdaftar di BLOCK_TYPES → INV-LP-02 otomatis menjaga); template `armada-bandara` kini
+  berisi blok route_grid (highlights diperbarui).
+- Frontend: komponen `RouteGrid` (EntityBlocks.jsx) — kartu rute NYATA (from→to, kode, durasi,
+  "Mulai Rp X flat/sekali jalan"), klik → `/booking?service=airport_transfer&route={id}`
+  (wizard booking preselect rute, atribusi iklan diteruskan); case di LandingRender;
+  form editor (limit, toggle harga, picker rute `lp-route-ids`, CTA) di LandingBlockForm;
+  refs.routes di-fetch di LandingBuilder (pratinjau) & LandingPage (publik).
+- Verifikasi: gate HIJAU penuh; testing_agent **iteration_107** backend 7/7 + frontend 100%
+  end-to-end (publik: klik "Pesan rute ini" → wizard booking rute ter-preselect; regresi
+  /lp/sewa-hiace-jakarta & template lain aman). Suite: backend/tests/test_landing_route_grid.py.
+- Catatan QA: opsi select "+ Tambah blok" (shadcn) belum punya testid per-opsi (kosmetik).
+
 
 

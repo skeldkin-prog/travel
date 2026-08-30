@@ -6,7 +6,7 @@ import sys
 import random
 from datetime import datetime, timedelta
 
-BASE_URL = "https://fleet-booking-system-3.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class SupplementaryTester:
     def __init__(self):

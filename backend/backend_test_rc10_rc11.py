@@ -9,7 +9,7 @@ import random
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-BASE_URL = "https://fleet-booking-system-3.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class TestRunner:
     def __init__(self):

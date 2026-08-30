@@ -10,7 +10,7 @@ import sys
 import json
 
 class Fase3DestinationsTest:
-    def __init__(self, base_url="https://travel-app-demo-1.preview.emergentagent.com"):
+    def __init__(self, base_url="https://trip-route-buttons.preview.emergentagent.com"):
         self.base_url = base_url
         self.tests_run = 0
         self.tests_passed = 0

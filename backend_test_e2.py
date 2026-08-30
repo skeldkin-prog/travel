@@ -10,7 +10,7 @@ import json
 from datetime import datetime, timedelta
 
 class E2TestSuite:
-    def __init__(self, base_url="https://travel-app-demo-1.preview.emergentagent.com"):
+    def __init__(self, base_url="https://trip-route-buttons.preview.emergentagent.com"):
         self.base_url = base_url
         self.token = None
         self.tests_run = 0

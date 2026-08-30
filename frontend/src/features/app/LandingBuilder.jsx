@@ -34,7 +34,7 @@ export default function LandingBuilder() {
   const [pages, setPages] = useState([]);
   const [templates, setTemplates] = useState([]);
   const [presets, setPresets] = useState({});
-  const [refs, setRefs] = useState({ fleet: [], destinations: [], testimonials: [] });
+  const [refs, setRefs] = useState({ fleet: [], destinations: [], routes: [], testimonials: [] });
   const [filters, setFilters] = useState({ q: "", segment: "", status: "" });
   const [active, setActive] = useState(null);
   const [dirty, setDirty] = useState(false);
@@ -64,13 +64,15 @@ export default function LandingBuilder() {
       apiClient.get("/landing/templates").then((r) => r.data),
       apiClient.get("/public/fleet").then((r) => r.data).catch(() => []),
       apiClient.get("/public/destinations").then((r) => r.data).catch(() => []),
+      apiClient.get("/public/booking/config").then((r) => r.data).catch(() => ({})),
       apiClient.get("/public/testimonials").then((r) => r.data).catch(() => []),
       loadPages(),
-    ]).then(([t, fleet, dest, testi]) => {
+    ]).then(([t, fleet, dest, cfg, testi]) => {
       setTemplates(t.templates || []);
       setPresets(t.theme_presets || {});
       const arr = (v) => (Array.isArray(v) ? v : v?.items || []);
-      setRefs({ fleet: arr(fleet), destinations: arr(dest), testimonials: arr(testi) });
+      setRefs({ fleet: arr(fleet), destinations: arr(dest),
+        routes: Array.isArray(cfg?.routes) ? cfg.routes : [], testimonials: arr(testi) });
       setError(null);
     }).catch((e) => setError(e?.response?.data?.detail || "Gagal memuat Landing Page Builder"))
       .finally(() => setLoading(false));
@@ -354,7 +356,7 @@ export default function LandingBuilder() {
           <div className="max-h-[620px] overflow-y-auto bg-[#F2F2F5] p-2">
             <div className="mx-auto bg-white" style={{ width: previewWidth, maxWidth: "100%" }}>
               <LandingRender page={active} mode="preview" fleet={refs.fleet}
-                destinations={refs.destinations} testimonials={refs.testimonials}
+                destinations={refs.destinations} routes={refs.routes} testimonials={refs.testimonials}
                 onCta={(cta) => toast.info(`Pratinjau: tombol “${cta?.label || "aksi"}” aktif di halaman publik`)}
                 onSearch={() => toast.info("Pratinjau: pencarian aktif di halaman publik")} />
             </div>
@@ -362,7 +364,7 @@ export default function LandingBuilder() {
         </section>
 
         <div className="space-y-3">
-          <LandingBlockForm block={block} fleet={refs.fleet} destinations={refs.destinations}
+          <LandingBlockForm block={block} fleet={refs.fleet} destinations={refs.destinations} routes={refs.routes}
             onChange={(next) => setBlocks((bs) => bs.map((b, i) => (i === selected ? next : b)))}
             onDelete={() => {
               setBlocks((bs) => bs.filter((_, i) => i !== selected));

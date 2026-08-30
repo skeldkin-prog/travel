@@ -7,7 +7,7 @@ import sys
 import time
 from datetime import datetime
 
-BASE_URL = "https://journey-rebuild-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Round2Tester:
     def __init__(self):

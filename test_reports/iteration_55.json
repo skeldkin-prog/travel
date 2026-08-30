@@ -83,7 +83,7 @@
     }
   },
   "test_environment": {
-    "backend_url": "https://infallible-moser-5.preview.emergentagent.com/api",
+    "backend_url": "https://trip-route-buttons.preview.emergentagent.com/api",
     "test_credentials": "owner@demo.local / demo12345",
     "database_state": "Clean re-seeded with bookings BK-0001 to BK-0006",
     "test_approach": "Used unique far-future dates (2027-2028) and available vehicles only to avoid state pollution"

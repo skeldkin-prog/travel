@@ -8,7 +8,7 @@ import time
 from datetime import datetime, timedelta
 from typing import Dict, Any, List
 
-BASE_URL = "https://travel-pipeline-3.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class RCTestRunner:
     def __init__(self):

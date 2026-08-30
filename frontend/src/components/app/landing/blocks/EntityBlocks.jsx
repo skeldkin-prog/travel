@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ArrowRight, Clock, Plane } from "lucide-react";
 import { formatCurrency } from "@/utils/formatters";
 import { CardsSkeleton, EmptyNote, EntityCard, Heading, Wrap } from "@/components/app/landing/shared";
 
@@ -121,6 +121,80 @@ export function DestinationGrid({ p, theme, destinations, loading, onCta }) {
           ))}
         </div>
       )}
+    </Wrap>
+  );
+}
+
+function durationLabel(minutes) {
+  const m = Number(minutes) || 0;
+  if (!m) return "";
+  const h = Math.floor(m / 60);
+  const r = m % 60;
+  return `±${[h ? `${h} jam` : "", r ? `${r} mnt` : ""].filter(Boolean).join(" ")}`;
+}
+
+/**
+ * RouteGrid — rute antar-jemput bertarif FLAT dari master ERP (`/api/public/booking/config`).
+ * Tombol "Pesan rute ini" membuka wizard booking dengan layanan + rute SUDAH terpilih.
+ */
+export function RouteGrid({ p, theme, routes, loading, onCta }) {
+  let rows = Array.isArray(routes) ? [...routes] : [];
+  if (p.ids?.length) rows = rows.filter((r) => p.ids.includes(r.id));
+  rows = rows.slice(0, p.limit || 6);
+  return (
+    <Wrap theme={theme}>
+      <Heading title={p.title} subtitle={p.subtitle} theme={theme} />
+      {loading ? (
+        <CardsSkeleton />
+      ) : !rows.length ? (
+        <EmptyNote testId="lp-route-empty">
+          Belum ada rute antar-jemput aktif. Tambahkan rute & tarif flat di menu pemesanan online.
+        </EmptyNote>
+      ) : (
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3" data-testid="lp-route-grid">
+          {rows.map((r) => (
+            <button key={r.id} type="button" data-testid={`lp-route-${r.id}`}
+              onClick={() => onCta?.({ kind: "internal", label: `Pesan rute ${r.code || r.name}`,
+                target: `/booking?service=airport_transfer&route=${r.id}`, keep_attribution: true })}
+              className="group bg-white p-4 text-left shadow-sm transition-shadow hover:shadow-md"
+              style={{ borderRadius: theme.radius }}>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full"
+                style={{ background: `${theme.primary}15`, color: theme.primary }}>
+                <Plane size={15} />
+              </span>
+              <h3 className="mt-2.5 flex items-center gap-1.5 text-[14px] font-bold leading-snug"
+                style={{ color: theme.text }}>
+                <span className="truncate">{r.from_label}</span>
+                <ArrowRight size={13} className="shrink-0" style={{ color: theme.primary }} />
+                <span className="truncate">{r.to_label}</span>
+              </h3>
+              <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11.5px] text-[#6B7280]">
+                {r.code ? <span className="font-semibold uppercase tracking-wide">{r.code}</span> : null}
+                {r.duration_minutes ? (
+                  <span className="inline-flex items-center gap-1"><Clock size={11} /> {durationLabel(r.duration_minutes)}</span>
+                ) : null}
+              </div>
+              {p.show_price !== false && r.from_price ? (
+                <p className="mt-2 text-[14px] font-extrabold tabular-nums" style={{ color: theme.primary }}>
+                  Mulai {formatCurrency(r.from_price)} <span className="text-[11px] font-semibold text-[#8B93A0]">flat / sekali jalan</span>
+                </p>
+              ) : null}
+              <span className="mt-2.5 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                style={{ color: theme.primary }}>
+                Pesan rute ini <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+      {p.cta?.label ? (
+        <div className="mt-4 text-center">
+          <button type="button" onClick={() => onCta?.(p.cta)} data-testid="lp-route-cta"
+            className="text-[13px] font-bold underline-offset-2 hover:underline" style={{ color: theme.primary }}>
+            {p.cta.label}
+          </button>
+        </div>
+      ) : null}
     </Wrap>
   );
 }

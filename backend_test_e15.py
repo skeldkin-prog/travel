@@ -11,7 +11,7 @@ from datetime import datetime
 from time import sleep
 
 class E15TestSuite:
-    def __init__(self, base_url="https://travel-app-demo-1.preview.emergentagent.com"):
+    def __init__(self, base_url="https://trip-route-buttons.preview.emergentagent.com"):
         self.base_url = base_url
         self.secret = "c5ec694b7067a93fcf056bebc1ec8a547e6aefec07da7b85"
         self.tokens = {}

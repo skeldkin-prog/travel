@@ -13,7 +13,7 @@ import sys
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional
 
-BASE_URL = "https://infallible-moser-5.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class DriverDeleteTester:
     def __init__(self):

@@ -13,7 +13,7 @@ from typing import List, Dict, Any
 import requests
 
 # Public endpoint from frontend/.env
-BASE_URL = "https://infallible-moser-5.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 # Test credentials
 OWNER_EMAIL = "owner@demo.local"

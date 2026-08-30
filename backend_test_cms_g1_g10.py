@@ -18,7 +18,7 @@ import requests
 import sys
 from datetime import datetime, timedelta
 
-BASE_URL = "https://backend-verify-17.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class TestRunner:
     def __init__(self):
@@ -347,7 +347,7 @@ def main():
     # G3.2: GET uploaded image URL → 200, content-type image/png
     if uploaded_url:
         print("\n2️⃣ GET uploaded image URL...")
-        full_url = f"https://backend-verify-17.preview.emergentagent.com{uploaded_url}"
+        full_url = f"https://trip-route-buttons.preview.emergentagent.com{uploaded_url}"
         try:
             img_response = requests.get(full_url, timeout=10)
             success = img_response.status_code == 200

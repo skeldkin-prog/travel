@@ -7,7 +7,7 @@ import sys
 from typing import Dict, Any
 from datetime import datetime, timedelta
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class E16TestRunner:
     def __init__(self):

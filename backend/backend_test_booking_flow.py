@@ -9,7 +9,7 @@ from typing import Dict, Any
 from datetime import datetime, timedelta
 
 # Use public endpoint from frontend/.env
-BASE_URL = "https://transit-portal-15.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 # Test dates: 25-27 days from now (to avoid seed data conflicts)
 TODAY = datetime.utcnow()

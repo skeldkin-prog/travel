@@ -17,7 +17,8 @@ import { ChipsEditor, CtaEditor, CtaListEditor, EntityIdsPicker, GalleryEditor, 
  */
 export const BLOCK_LABELS = {
   search_hero: "Hero + Pencarian", hero_media: "Hero Gambar/Video", value_props: "Keunggulan",
-  fleet_grid: "Daftar Armada", destination_grid: "Daftar Destinasi", gallery: "Galeri Foto",
+  fleet_grid: "Daftar Armada", destination_grid: "Daftar Destinasi", route_grid: "Rute Antar-Jemput",
+  gallery: "Galeri Foto",
   video: "Video", testimonials: "Testimoni", price_estimator: "Estimasi Harga", faq: "FAQ",
   cta_band: "Banner CTA", wa_cta: "Tombol WhatsApp", lead_form: "Formulir Lead",
   countdown: "Hitung Mundur", trust_badges: "Lencana Kepercayaan", rich_text: "Teks Bebas",
@@ -32,6 +33,7 @@ const TEXTS = {
   value_props: [["title", "Judul bagian"]],
   fleet_grid: [["title", "Judul bagian"], ["subtitle", "Sub-judul"]],
   destination_grid: [["title", "Judul bagian"], ["subtitle", "Sub-judul"]],
+  route_grid: [["title", "Judul bagian"], ["subtitle", "Sub-judul"]],
   gallery: [["title", "Judul bagian"]],
   video: [["title", "Judul bagian"]],
   testimonials: [["title", "Judul bagian"]],
@@ -54,7 +56,7 @@ const DEVICES = [
   { value: "mobile", label: "Hanya ponsel" },
 ];
 
-export default function LandingBlockForm({ block, onChange, onDelete, fleet = [], destinations = [] }) {
+export default function LandingBlockForm({ block, onChange, onDelete, fleet = [], destinations = [], routes = [] }) {
   if (!block) {
     return (
       <EmptyState title="Pilih blok" testId="lp-form-empty"
@@ -67,6 +69,8 @@ export default function LandingBlockForm({ block, onChange, onDelete, fleet = []
 
   const fleetOptions = (fleet || []).map((v) => ({ value: v.id, label: `${v.name} (${v.capacity || "-"} kursi)` }));
   const destOptions = (destinations || []).map((d) => ({ value: d.id, label: d.name }));
+  const routeOptions = (routes || []).map((r) => ({
+    value: r.id, label: `${r.from_label} → ${r.to_label}${r.code ? ` (${r.code})` : ""}` }));
 
   return (
     <section className="section-card" data-testid="lp-block-form">
@@ -172,14 +176,18 @@ export default function LandingBlockForm({ block, onChange, onDelete, fleet = []
           </>
         ) : null}
 
-        {["fleet_grid", "destination_grid", "testimonials"].includes(type) ? (
+        {["fleet_grid", "destination_grid", "route_grid", "testimonials"].includes(type) ? (
           <NumberRow id="bf-limit" label="Maksimal kartu ditampilkan" min={1} max={12} testId="lp-prop-limit"
             value={p.limit ?? 6} onChange={(v) => setProp("limit", v)} />
         ) : null}
-        {["fleet_grid", "destination_grid"].includes(type) ? (
+        {["fleet_grid", "destination_grid", "route_grid"].includes(type) ? (
           <ToggleRow label="Tampilkan harga" checked={p.show_price !== false}
             onChange={(v) => setProp("show_price", v)} testId="lp-prop-showprice"
             hint="Harga mempercepat keputusan, tapi matikan bila tarif sedang berubah." />
+        ) : null}
+        {type === "route_grid" ? (
+          <EntityIdsPicker label="Pilih rute tertentu (kosongkan = semua rute aktif)" ids={p.ids}
+            options={routeOptions} onChange={(v) => setProp("ids", v)} testId="lp-route-ids" />
         ) : null}
         {type === "fleet_grid" ? (
           <>
@@ -230,7 +238,7 @@ export default function LandingBlockForm({ block, onChange, onDelete, fleet = []
         {["hero_media", "cta_band"].includes(type) ? (
           <CtaListEditor ctas={p.ctas} onChange={(v) => setProp("ctas", v)} max={2} />
         ) : null}
-        {type === "fleet_grid" || type === "destination_grid" ? (
+        {["fleet_grid", "destination_grid", "route_grid"].includes(type) ? (
           <CtaEditor cta={p.cta} onChange={(v) => setProp("cta", v)} />
         ) : null}
         {type === "cta_band" ? (

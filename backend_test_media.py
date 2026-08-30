@@ -21,7 +21,7 @@ import sys
 import io
 from datetime import datetime
 
-BASE_URL = "https://travel-backend-fix.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class MediaTestRunner:
     def __init__(self):

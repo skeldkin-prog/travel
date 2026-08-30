@@ -23,7 +23,7 @@ load_dotenv(ROOT / "backend" / ".env")
 from motor.motor_asyncio import AsyncIOMotorClient
 
 # Public endpoint
-BASE_URL = "https://landing-page-ads.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 API = f"{BASE_URL}/api"
 
 def login(email="owner@demo.local"):

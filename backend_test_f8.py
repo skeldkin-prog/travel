@@ -21,7 +21,7 @@ import io
 import uuid
 from datetime import datetime
 
-BASE_URL = "https://landing-page-ads.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class TestRunner:
     def __init__(self):

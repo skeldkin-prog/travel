@@ -6,7 +6,7 @@ import requests
 import time
 from datetime import datetime, timedelta
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 
 def login(email, password):
     response = requests.post(f"{BASE_URL}/api/auth/login", 

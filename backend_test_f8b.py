@@ -16,7 +16,7 @@ import requests
 from datetime import datetime
 
 # Public endpoint from frontend/.env
-BASE_URL = "https://landing-page-ads.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 API = f"{BASE_URL}/api"
 
 # Test credentials from /app/memory/test_credentials.md

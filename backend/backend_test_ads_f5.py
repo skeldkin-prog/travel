@@ -10,7 +10,7 @@ import sys
 import requests
 from datetime import datetime
 
-BASE_URL = "https://travel-api-hub-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 # Test credentials
 USERS = {

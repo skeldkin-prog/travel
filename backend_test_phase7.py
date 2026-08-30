@@ -7,7 +7,7 @@ import sys
 import time
 from datetime import datetime
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Phase7Tester:
     def __init__(self):

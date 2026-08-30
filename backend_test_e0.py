@@ -10,7 +10,7 @@ import time
 from datetime import datetime
 
 class E0TestSuite:
-    def __init__(self, base_url="https://travel-app-demo-1.preview.emergentagent.com"):
+    def __init__(self, base_url="https://trip-route-buttons.preview.emergentagent.com"):
         self.base_url = base_url
         self.tokens = {}
         self.tests_run = 0

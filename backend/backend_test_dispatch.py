@@ -6,7 +6,7 @@ import requests
 import sys
 from datetime import datetime, timedelta
 
-BASE_URL = "https://travel-app-demo-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 # Test credentials
 CREDENTIALS = {

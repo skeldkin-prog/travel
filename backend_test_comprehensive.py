@@ -25,7 +25,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 
-BASE_URL = "https://erp-5xx-fixes.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class Colors:
     GREEN = '\033[92m'

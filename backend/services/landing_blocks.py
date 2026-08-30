@@ -222,6 +222,18 @@ def _destination_grid(p):
             "cta": _cta(p.get("cta"))}
 
 
+def _route_grid(p):
+    """Rute antar-jemput bertarif FLAT dari master ERP (`/api/public/booking/config` → routes[]).
+    Data rute TIDAK disalin ke props: blok hanya menyimpan pilihan (ids/limit), harga & nama rute
+    selalu dibaca dari master sehingga perubahan tarif langsung tampil di halaman iklan."""
+    return {"title": plain(p.get("title") or "Rute Antar-Jemput Bandara", 120),
+            "subtitle": plain(p.get("subtitle"), 200),
+            "ids": [plain(x, 40) for x in _list(p.get("ids"))][:12],
+            "limit": _int(p.get("limit"), 6, 1, 12),
+            "show_price": _bool(p.get("show_price"), True),
+            "cta": _cta(p.get("cta"))}
+
+
 def _gallery(p):
     return {"title": plain(p.get("title"), 120),
             "items": [_media(m) for m in _list(p.get("items"))][:12],
@@ -389,6 +401,7 @@ BLOCK_TYPES = {
     "value_props": _value_props,
     "fleet_grid": _fleet_grid,
     "destination_grid": _destination_grid,
+    "route_grid": _route_grid,
     "gallery": _gallery,
     "testimonials": _testimonials,
     "price_estimator": _price_estimator,

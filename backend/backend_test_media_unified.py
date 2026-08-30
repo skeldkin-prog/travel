@@ -14,7 +14,7 @@ import sys
 import requests
 from datetime import datetime
 
-BASE_URL = "https://inv-media.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 
 class MediaLibraryTester:
     def __init__(self):

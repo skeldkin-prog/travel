@@ -6,7 +6,7 @@ import requests
 import sys
 from datetime import datetime
 
-BASE_URL = "https://explore-world-148.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class DataCleanlinessTest:
     def __init__(self):

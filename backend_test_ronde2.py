@@ -8,7 +8,7 @@ import sys
 from datetime import datetime, timedelta
 
 # Use public endpoint
-BASE_URL = "https://transit-portal-15.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 # Test dates: >= 20 days from now (seed data full Aug 10-17, 2026)
 TODAY = datetime.utcnow()

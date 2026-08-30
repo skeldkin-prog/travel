@@ -10,7 +10,7 @@ import requests
 import sys
 from datetime import datetime, timedelta
 
-BASE_URL = "https://booking-system-353.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 
 class TestRunner:
     def __init__(self):

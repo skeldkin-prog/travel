@@ -7,7 +7,7 @@ import sys
 from datetime import datetime, timedelta
 from typing import Dict, Any
 
-BASE_URL = "https://journey-rebuild-1.preview.emergentagent.com/api"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com/api"
 
 class CMSTestRunner:
     def __init__(self):

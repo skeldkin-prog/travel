@@ -25,7 +25,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from core_utils import now_iso
 
 # Public endpoint
-BASE_URL = "https://landing-page-ads.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 API = f"{BASE_URL}/api"
 
 def login(email="owner@demo.local"):

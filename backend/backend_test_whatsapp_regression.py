@@ -9,7 +9,7 @@ import sys
 import json
 from datetime import datetime
 
-BASE_URL = "https://erp-5xx-fixes.preview.emergentagent.com"
+BASE_URL = "https://trip-route-buttons.preview.emergentagent.com"
 TEST_USER = "owner@demo.local"
 TEST_PASSWORD = "demo12345"
 
